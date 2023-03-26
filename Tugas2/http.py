@@ -45,6 +45,19 @@ while True:
     if not received:
         break
     response += received.decode('utf-8')
+    
+pisahkan = response.split()
 
-print(response)
+
+print("Versi HTTP : " + pisahkan[0])
+print("Content-Encoding : ")
+for line in pisahkan:
+    if 'Content-Encoding' in line:
+        print(line)
+        
+print("Status Code : " + pisahkan[1] + " " + pisahkan[2])
+print("Charset: ")
+for line in pisahkan:
+    if 'charset' in line:
+        print(line)
 s.close()
